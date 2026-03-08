@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回忆篇</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "ys";
+        }
+
+        @font-face {
+            font-family: 'ys';
+            src: url(原神.ttf);
+        }
+
+        :root {
+            --primary: #f8f9fa;
+            --secondary: #e9ec
+            --accent: #4361ee;
+            --text: #212529;
+            --text-secondary: #495057;
+            --border: #dee2e6;
+            --mondstadt: #65c3c8;
+            --liyue: #d4a017;
+            --inazuma: #9d7fbd;
+            --sumeru: #7bbf6a;
+            --fontaine: #5c8dde;
+            --natlan: #e76f51;
+            --snezhnaya: #90e0ef;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e2e9fb 100%);
+        }
+
+        /* 主容器 */
+        .container {
+            display: flex;
+            height: 100vh;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* 左侧导航 */
+        .nav {
+            width: 30%;
+            min-width: 380px;
+            border-right: 2px solid #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+            padding: 15px;
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+        }
+
+        .navtop {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .top1,
+        .top2 {
+            display: flex;
+            overflow-x: auto;
+            padding: 5px 0;
+            gap: 8px;
+            /* 添加滚动条样式 */
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--secondary);
+        }
+
+        /* 滚动条样式 */
+        .top1::-webkit-scrollbar,
+        .top2::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .top1::-webkit-scrollbar-track,
+        .top2::-webkit-scrollbar-track {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .top1::-webkit-scrollbar-thumb,
+        .top2::-webkit-scrollbar-thumb {
+            background-color: var(--accent);
+            border-radius: 4px;
+        }
+
+        .top1 span{
+            border-radius: 30px;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            display: flex;
+            flex: 0 0 auto;
+            justify-content: center;
+        }
+        .top2 span {
+            flex: 0 0 auto;
+            padding: 8px 15px;
+            background-color: var(--secondary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid var(--border);
+            font-size: 1rem;
+            min-width: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top1 span:hover,
+        .top2 span:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
+        }
+
+        .top1 span.active,
+        .top2 span.active {
+            color: #7c659f;
+            font-weight: 600;
+        }
+
+        /* 地区特定颜色 */
+        .mondstadt {
+            background-color: var(--mondstadt);
+            border-color: #4e9da1;
+        }
+
+        .liyue {
+            background-color: var(--liyue);
+            border-color: #b58d12;
+        }
+
+        .inazuma {
+            background-color: var(--inazuma);
+            border-color: #7c659f;
+        }
+
+        .sumeru {
+            background-color: var(--sumeru);
+            border-color: #5e9b4f;
+        }
+
+        .fontaine {
+            background-color: var(--fontaine);
+            border-color: #4571c4;
+        }
+
+        .natlan {
+            background-color: var(--natlan);
+            border-color: #c95d42;
+        }
+
+        .khaenriah {
+            background-color: #5d5d5d;
+            border-color: #3d3d3d;
+        }
+
+        .snezhnaya {
+            background-color: var(--snezhnaya);
+            border-color: #6ebac8;
+        }
+
+        .teyvat {
+            background: linear-gradient(135deg, #65c3c8 0%, #d4a017 20%, #9d7fbd 40%, #7bbf6a 60%, #5c8dde 80%, #e76f51 100%);
+            border-color: #5d5d5d;
+        }
+
+        .recommend {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            border-color: #e67a89;
+        }
+
+        .new {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            border-color: #7aa7e8;
+        }
+
+        .popular {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-color: #f0a278;
+        }
+
+        .award {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            border-color: #5fd6a1;
+        }
+
+        .top2 span.active::after
+         {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(95, 76, 76, 0.2);
+            z-index: 1;
+        }
+
+        .top2 {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .navbot {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            align-content: flex-start;
+        }
+
+        .navbot img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .navbot img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbot img.active {
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            transform: scale(1.03);
+        }
+
+        /* 右侧大图展示 */
+        .img-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+        }
+
+        .main-img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.5s ease;
+            border: 4px solid white;
+        }
+
+        .image-info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 15px 25px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            border-radius: 12px 12px 0 0;
+            max-width: 80%;
+            margin: 0 auto;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-info h2 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .image-info p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .image-info .category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .nav {
+                width: 100%;
+                min-width: 0;
+                height: auto;
+                max-height: 50vh;
+            }
+
+            .img-container {
+                height: 50vh;
+                padding: 20px;
+            }
+
+            .navbot {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 12px;
+            }
+
+            .navbot img {
+                height: 150px;
+            }
+
+            .main-img {
+                max-height: 45vh;
+            }
+
+            .image-info {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+                max-width: 95%;
+            }
+
+            .image-info h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav {
+                max-height: 45vh;
+            }
+
+            .navbot {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .navbot img {
+                height: 120px;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .top1,
+            .top2 {
+                gap: 8px;
+            }
+
+            .top1 span,
+            .top2 span {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                min-width: 60px;
+            }
+
+            .top2 span {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .img-container {
+                height: 55vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 左侧导航区 -->
+        <div class="nav">
+            <div class="navtop">
+                <div class="top1" id="top1">
+                    <span class="active mondstadt" data-region="mondstadt">蒙德</span>
+                    <span class="liyue" data-region="liyue">璃月</span>
+                    <span class="inazuma" data-region="inazuma">稻妻</span>
+                    <span class="sumeru" data-region="sumeru">须弥</span>
+                    <span class="fontaine" data-region="fontaine">枫丹</span>
+                    <span class="natlan" data-region="natlan">纳塔</span>
+                    <span class="khaenriah" data-region="khaenriah">坎瑞亚</span>
+                    <span class="snezhnaya" data-region="snezhnaya">至冬</span>
+                    <span class="teyvat" data-region="teyvat">提瓦特</span>
+                </div>
+                <div class="top2" id="top2">
+                    <!-- 第二行导航将由JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="navbot" id="navbot">
+                <!-- 图片区域将由JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 右侧大图展示区 -->
+        <div class="img-container">
+            <img src="" alt="精选图片" class="main-img" id="mainImg">
+            <!-- <div class="image-info">
+                <h2 id="imageTitle">图片标题</h2>
+                <p id="imageDesc">图片描述</p>
+                <div class="category" id="imageCategory">分类</div>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        // 数据结构：各地区及其子分类
+        const regionsData = {
+            mondstadt: {
+                name: "蒙德",
+                categories: [
+                    { name: "温迪", id: "mondstadt-recommend", color: "recommend" },
+                    { name: "法尔伽", id: "mondstadt-new", color: "new" },
+                    { name: "迪卢克", id: "mondstadt-popular", color: "popular" },
+                    { name: "班尼特", id: "mondstadt-award", color: "award" },
+                    { name: "阿贝多", id: "mondstadt-characters" ,color:"new"},
+                    { name: "砂糖", id: "mondstadt-scenes",color:"popular" },
+                    { name: "丽莎", id: "mondstadt-architecture",color:"award" },
+                    // { name: "待定", id: "mondstadt-landscape" },
+                    // { name: "待定", id: "mondstadt-festival" },
+                    // { name: "待定", id: "mondstadt-editor" }
+                ],
+                images: {
+                    "mondstadt-recommend": [
+                        { src: "/温迪-立绘.png", title: "温迪1", },
+                        { src: "", title: "温迪2", },
+                        { src: "", title: "温迪3", },
+                        { src: "", title: "温迪4", },
+                        { src: "", title: "温迪5", },
+                        { src: "", title: "温迪6", }
+                    ],
+                    "mondstadt-new": [
+                       { src: "/法尔伽.jpg", title: "温迪1", },
+                        { src: "", title: "法尔伽2", },
+                        { src: "", title: "法尔伽3", },
+                        { src: "", title: "法尔伽4", },
+                        { src: "", title: "法尔伽5", },
+                        { src: "", title: "法尔伽6", }
+                    ],
+                    "mondstadt-popular": [
+                        { src: "/温迪-立绘.png", title: "温迪1", },
+                        { src: "", title: "温迪2", },
+                        { src: "", title: "温迪3", },
+                        { src: "", title: "温迪4", },
+                        { src: "", title: "温迪5", },
+                        { src: "", title: "温迪6", }
+                    ]
+                }
+            },
+            liyue: {
+                name: "璃月",
+                categories: [
+                    { name: "钟离", id: "liyue-recommend", color: "recommend" },
+                    { name: "胡桃", id: "liyue-new", color: "new" },
+                    { name: "刻晴", id: "liyue-popular", color: "popular" },
+                    { name: "魈", id: "liyue-award", color: "award" },
+                    { name: "归终", id: "liyue-characters" },
+                    { name: "香菱", id: "liyue-scenes" },
+                    { name: "行秋", id: "liyue-architecture" },
+                    { name: "蓝砚", id: "liyue-landscape" },
+                    { name: "2", id: "liyue-festival" },
+                    { name: "2", id: "liyue-editor" }
+                ],
+                images: {
+                    "liyue-recommend": [
+                        { src: "钟离-立绘.png", title: "璃月港全景", desc: "提瓦特大陆最繁荣的商港，契约之神的国度", category: "璃月" },
+                        { src: "https://uploadstatic.mihoyo.com/ys-obc/2021/07/20/75276552/80aa9e56d7e4f5c6d7f8e9a0b1c2d3e4_914608989511127595.jpg", title: "绝云间仙境", desc: "仙家隐居之地，云雾缭绕的世外桃源", category: "璃月" },
+                        { src: "https://uploadstatic.mihoyo.com/ys-obc/2021/02/04/75276552/7f8e9a0b1c2d3e4f5d6c7b8a9d0e1f2a_8209008553045951413.jpg", title: "庆云顶", desc: "璃月最高峰，俯瞰整个璃月大地的绝佳去处", category: "璃月" }
+                    ],
+                    "liyue-new": [
+                        { src: "https://i.postimg.cc/L5FJnr5R/1.jpg", desc: "璃月北部的宁静村庄，依山而建的壮丽梯田", category: "璃月" },
+                        { src: "https://i.postimg.cc/tg7Zf380/2.jpg", title: "孤云阁", desc: "岩神镇压魔神之地，如今是冒险家的乐园", category: "璃月" }
+                    ]
+                }
+            },
+            inazuma: {
+                name: "稻妻",
+                categories: [
+                    { name: "精选推荐", id: "inazuma-recommend", color: "recommend" },
+                    { name: "最新作品", id: "inazuma-new", color: "new" },
+                    { name: "人气最高", id: "inazuma-popular", color: "popular" },
+                    { name: "获奖作品", id: "inazuma-award", color: "award" },
+                    { name: "角色合集", id: "inazuma-characters" },
+                    { name: "场景特写", id: "inazuma-scenes" },
+                    { name: "建筑艺术", id: "inazuma-architecture" },
+                    { name: "风景摄影", id: "inazuma-landscape" },
+                    { name: "节日庆典", id: "inazuma-festival" },
+                    { name: "编辑推荐", id: "inazuma-editor" }
+                ],
+                images: {
+                    "inazuma-recommend": [
+                        { src: "https://uploadstatic.mihoyo.com/ys-obc/2022/02/18/75276552/6e7f8e9a0b1c2d3e4f5d6c7b8a9d0e1f_7274046621716684464.jpg", title: "稻妻城", desc: "雷电将军统治的永恒国度，充满东方韵味", category: "稻妻" },
+                        { src: "https://uploadstatic.mihoyo.com/ys-obc/2021/07/20/75276552/0e1f2a3b4c5d6e7f8e9a0b1c2d3e4f5d_386175336139645322.jpg", title: "鸣神大社", desc: "稻妻至高神社，巨大的神樱树守护着这片土地", category: "稻妻" }
+                    ]
+                }
+            }
+            // 其他地区数据结构类似，这里省略以节省空间
+        };
+
+        // DOM元素
+        const top1 = document.getElementById('top1');
+        const top2 = document.getElementById('top2');
+        const navbot = document.getElementById('navbot');
+        const mainImg = document.getElementById('mainImg');
+        const imageTitle = document.getElementById('imageTitle');
+        const imageDesc = document.getElementById('imageDesc');
+        const imageCategory = document.getElementById('imageCategory');
+
+        // 当前选中的图片索引
+        let currentIndex = 0;
+        let currentImages = [];
+        let autoScrollInterval;
+
+        // 初始化页面
+        function initPage() {
+            // 设置初始地区为蒙德
+            selectRegion('mondstadt');
+
+            // 为第一行导航添加点击事件
+            document.querySelectorAll('.top1 span').forEach(span => {
+                span.addEventListener('click', function () {
+                    const region = this.getAttribute('data-region');
+                    selectRegion(region);
+                });
+            });
+        }
+
+        // 选择地区并更新子分类
+        function selectRegion(regionId) {
+            const region = regionsData[regionId];
+            if (!region) return;
+
+            // 更新第一行导航激活状态
+            document.querySelectorAll('.top1 span').forEach(span => {
+                span.classList.remove('active');
+                if (span.getAttribute('data-region') === regionId) {
+                    span.classList.add('active');
+                }
+            });
+
+            // 更新第二行导航
+            updateSubcategories(region.categories);
+
+            // 默认选择第一个子分类
+            if (region.categories.length > 0) {
+                setTimeout(() => {
+                    selectCategory(region.categories[0].id);
+                    // 激活第一个子分类
+                    const firstSubcategory = top2.querySelector('span');
+                    if (firstSubcategory) {
+                        document.querySelectorAll('.top2 span').forEach(s => s.classList.remove('active'));
+                        firstSubcategory.classList.add('active');
+                    }
+                }, 0);
+            }
+        }
+
+        // 更新子分类导航
+        function updateSubcategories(categories) {
+            // 清空第二行导航
+            top2.innerHTML = '';
+
+            // 添加新的子分类
+            categories.forEach(category => {
+                const span = document.createElement('span');
+                span.textContent = category.name;
+                span.setAttribute('data-category', category.id);
+                if (category.color) {
+                    span.classList.add(category.color);
+                }
+
+                span.addEventListener('click', function () {
+                    document.querySelectorAll('.top2 span').forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                    selectCategory(category.id);
+                });
+
+                top2.appendChild(span);
+            });
+        }
+
+        // 选择子分类并更新图片
+        function selectCategory(categoryId) {
+            // 获取当前地区ID
+            const activeRegion = document.querySelector('.top1 span.active');
+            const regionId = activeRegion.getAttribute('data-region');
+            const region = regionsData[regionId];
+
+            // 获取该子分类下的图片
+            const images = region.images[categoryId] || [];
+            currentImages = images;
+
+            // 更新图片区域
+            updateImages(images);
+
+            // 默认选中第一张图片
+            if (images.length > 0) {
+                setTimeout(() => {
+                    const firstImg = navbot.querySelector('img');
+                    if (firstImg) {
+                        navbot.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+                        firstImg.classList.add('active');
+                        updateMainImage(images[0]);
+                    }
+                }, 0);
+            }
+
+            // 重置自动滚动
+            resetAutoScroll();
+        }
+
+        // 更新图片区域
+        function updateImages(images) {
+            // 清空图片区域
+            navbot.innerHTML = '';
+
+            // 添加图片
+            images.forEach((image, index) => {
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.title;
+                img.dataset.title = image.title;
+                img.dataset.desc = image.desc;
+                img.dataset.category = image.category;
+                img.dataset.index = index;
+
+                img.addEventListener('click', function () {
+                    navbot.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+                    this.classList.add('active');
+                    updateMainImage(images[index]);
+                    currentIndex = index;
+                    resetAutoScroll();
+                });
+
+                navbot.appendChild(img);
+            });
+        }
+
+        // 更新主图
+        function updateMainImage(image) {
+            mainImg.src = image.src;
+            mainImg.alt = image.title;
+            imageTitle.textContent = image.title;
+            imageDesc.textContent = image.desc;
+            imageCategory.textContent = image.category;
+
+            // 添加动画效果
+            mainImg.style.animation = 'none';
+            setTimeout(() => {
+                mainImg.style.animation = 'fadeIn 0.5s ease';
+            }, 10);
+        }
+
+        // 自动滚动函数
+        function startAutoScroll() {
+            clearInterval(autoScrollInterval);
+
+            autoScrollInterval = setInterval(() => {
+                if (currentImages.length === 0) return;
+
+                currentIndex = (currentIndex + 1) % currentImages.length;
+
+                // 更新图片选中状态
+                const images = navbot.querySelectorAll('img');
+                images.forEach(img => img.classList.remove('active'));
+                if (images[currentIndex]) {
+                    images[currentIndex].classList.add('active');
+
+                    // 更新主图
+                    updateMainImage(currentImages[currentIndex]);
+
+                    // 滚动到当前图片
+                    images[currentIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }
+            }, 5000);
+        }
+
+        // 重置自动滚动
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        // 为顶部导航添加水平滚动
+        top1.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            top1.scrollLeft += e.deltaY;
+        });
+
+        top2.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            top2.scrollLeft += e.deltaY;
+        });
+
+        // 添加键盘导航支持
+        document.addEventListener('keydown', (e) => {
+            if (currentImages.length === 0) return;
+
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            } else if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+            } else {
+                return;
+            }
+
+            // 更新图片选中状态
+            const images = navbot.querySelectorAll('img');
+            images.forEach(img => img.classList.remove('active'));
+            if (images[currentIndex]) {
+                images[currentIndex].classList.add('active');
+
+                // 更新主图
+                updateMainImage(currentImages[currentIndex]);
+
+                // 滚动到当前图片
+                images[currentIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }
+
+            // 重置自动滚动
+            resetAutoScroll();
+        });
+
+        // 初始化页面
+        window.addEventListener('load', initPage);
+    </script>
+</body>
+
+</html>

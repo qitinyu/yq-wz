@@ -1,0 +1,1031 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "SimSun", "宋体", serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: frontnew;
+    src: url();
+}
+
+/* 导航栏样式 */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-image: url("https://i.postimg.cc/RFZZ6Wpz/h-3.png");
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.daohang {
+    display: flex;
+    gap: 30px;
+}
+
+.box {
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+}
+
+.box:hover {
+    background-color: #f0f5ff;
+    color: #2575fc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 117, 252, 0.3);
+}
+
+.denlu {
+    padding: 2px 20px 4px;
+    background: linear-gradient(135deg, #a1c4fd 10%, #c2e9fb 100%);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.denlu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 117, 252, 0.3);
+    color: #000;
+}
+
+/* 主页样式 */
+.zhuye {
+    height: 60vh;
+    margin-top: 80px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.geren {
+    width: 35%;
+    background-image: linear-gradient(#fff1eb 0%, #ace0f9 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    height: 380px;
+}
+
+.gtop {
+    position: relative;
+    padding: 30px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.tx {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: white;
+    position: relative;
+    background-image: url("https://i.postimg.cc/J7FF3BP5/8.jpg");
+    background-size: cover;
+    margin-left: 20px;
+}
+.tx :hover{
+    cursor: pointer;
+    background-size: cover;
+    background-image: url('https://i.postimg.cc/1t4BGFW3/ht.gif');
+}
+
+.tx-1 {
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    width: 123px;
+    height: 123px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid pink;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.user-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-info h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    font-weight: bolder;
+}
+
+.level-info {
+    display: flex;
+    gap: 5px;
+}
+
+#one {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.5em;
+    font-weight: bold;
+    background: #e23e0d;
+    width: fit-content;
+    color: #fff;
+}
+
+#two {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    background: #53B2F4;
+    width: fit-content;
+    color: #fff;
+}
+
+#san {
+    border-bottom: 1px dashed #fff;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 0 10px;
+}
+
+.gbot {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.xinxi {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    flex-direction: row;
+}
+
+#p1,
+#p2,
+#p3,
+#p4 {
+    display: inline-block;
+    margin: auto;
+}
+
+.gongao {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 25px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-family: "宋体";
+    width: 100%;
+    gap: 2px;
+}
+
+li {
+    list-style-type: none;
+    border-bottom: 1px solid #ddd4d4;
+}
+
+#li {
+    text-align: center;
+    background-color: #ffffff49;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#li:hover {
+    transition: transform 0.3s; /* 添加过渡效果 */
+    transform: translateY(4px); /* 水平下移2px */
+    font-weight: bold;
+    background-color: #FBF0EC;
+}
+
+
+.dianzan {
+    display: flex;
+    width: 70%;
+    height: 40px;
+    background-image: linear-gradient(135deg, #F6D242 10%, #FF52E5 100%);
+    border-radius: 10px;
+    margin: 5px auto 0;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: #0066cc;
+    font-family: "幼圆";
+}
+
+.dianzan>p {
+    line-height: 40px;
+}
+
+#p5 {
+    padding-left: 2px;
+    width: 60px;
+    height: 35px;
+    background-color: #ffcccc;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+    margin-top: 3px;
+    padding-right: 2px;
+}
+
+#p5:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+    border: 1px solid #fff;
+}
+
+.tp {
+    width: 63%;
+    height: 380px;
+    background-image: url("https://i.postimg.cc/mrtpw7n5/1.jpg");
+    background-size: cover;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tp-content {
+    padding: 40px 35px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%;
+    z-index: 1;
+}
+
+.tp h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.tp p {
+    font-size: 20px;
+    color: #7f8c8d;
+    letter-spacing: 1px;
+}
+
+/* 游戏板块样式 */
+.youxi {
+    min-height: 100vh;
+    padding: 50px 5%;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.youxi h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    position: relative;
+    padding-left: 20px;
+    flex-shrink: 0;
+    border-bottom: 2px dashed;
+}
+
+.youxi h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
+}
+
+.games-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+}
+
+.game-card {
+    width: 200px;
+    height: 240px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.game-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.game-card:hover .game-inner {
+    transform: rotateY(180deg);
+}
+
+.game-front,
+.game-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.game-front {
+    background-position: center;
+    color: white;
+    background-size: cover;
+}
+
+.game-front>span {
+    background-color: #7d7777;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 3px;
+}
+
+.game-back {
+    background: #fff;
+    color: #333;
+    transform: rotateY(180deg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-back h3 {
+    font-size: 1.2em;
+    margin-top: 3px;
+}
+
+.game-back p,
+a {
+    font-family: "楷体";
+    margin-top: 3px;
+    font-size: 16px;
+    color: #666;
+}
+
+/* 游戏卡片背景 */
+.bhs .game-front {
+    background: url('https://i.postimg.cc/XqVnGQxm/4.jpg');
+    background-size: cover;
+    /* 确保背景图片覆盖 */
+}
+
+.ys .game-front {
+    background: url('https://i.postimg.cc/NFSYJBQq/2.png');
+    background-size: cover;
+}
+
+.jql .game-front {
+    background: url('https://i.postimg.cc/C5HXD0ds/2.jpg');
+    background-size: cover;
+}
+
+.lm .game-front {
+    background: url('https://i.postimg.cc/3NHzdNrw/2.jpg');
+    background-size: cover;
+}
+
+.mc .game-front {
+    background: url('https://i.postimg.cc/gkVttfKr/Minecraft.avif');
+    background-size: cover;
+}
+
+.youxi-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* 动漫板块样式 */
+.donman {
+    padding: 80px 5%;
+    background: white;
+}
+
+.donman h2 {
+    display: flex;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 2px dashed;
+    justify-content: space-between;
+}
+
+.donman h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+}
+
+#gd{
+    font-size:0.5em ;
+    padding-top: 12px;
+}
+#gd:hover{
+    transform: translateX( 3px);
+    background-color: #FFCCCC;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.dm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.dm {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #17dad7;
+}
+
+.dm:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.d-left {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+
+.d-right {
+    padding: 25px;
+}
+
+.d-right a {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "宋体";
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.d-right a:hover{
+    color: #4479d5;
+}
+
+.d-right p:first-of-type {
+    color: #6a11cb;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.d-right p:last-of-type {
+    color: #7f8c8d;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* 音乐板块样式 */
+.yinyue {
+    padding: 80px 5%;
+    background: linear-gradient(to bottom, #f8f9fa, #eef2f7);
+}
+
+.yinyue h2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 2px dashed;
+}
+
+.yinyue h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
+}
+
+.music-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.music-card {
+    width: 260px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+}
+
+.music-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.music-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.play-icon i {
+    color: #6a11cb;
+    font-size: 24px;
+}
+
+.music-card:hover .play-icon {
+    opacity: 1;
+}
+
+.music-info {
+    padding: 20px;
+}
+
+.music-info a {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #2c3e50;
+}
+.music-info a:hover{
+    color: #78cedf;
+}
+.music-info p {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.music-player {
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-progress {
+    width: 1%;
+    height: 100%;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.music-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #95a5a6;
+    margin-top: 8px;
+}
+
+/* 日志版块 */
+.rizhi {
+    padding: 80px 5%;
+    background: linear-gradient(to bottom, #f8f9fa, #eef2f7);
+}
+
+.rizhi h2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 2px dashed;
+}
+
+.rizhi h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(to bottom, #21b5db, #2bd4b5);
+}
+
+.rizhi-cont {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.rz {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.8rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid #000;
+}
+.rz h3 {
+    font-size: 1.25rem;
+    color: #2575fc;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px dashed pink;
+}
+#rz-1 {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+}
+
+#rz-1 img {
+    background-size: cover;
+}
+.rz:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#rz-2 h2 {
+    border-left: 6px solid pink;
+    margin: 0;
+}
+
+#rz-2 p {
+    margin: 5px 10px 10px;
+    float: right;
+}
+
+.zuo,
+.you {
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+}
+.biank{
+ border: 1px solid #000;
+ border-radius: 5px;
+}
+.yonhu1 {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.yonhu1>span {
+    display: block;
+    margin-left: 2px;
+    line-height: 40px;
+}
+
+.touxiang1 {
+    display: flex;
+    width: 200px;
+    height: 40px;
+}
+
+.yhtx1 {
+    width: 40px;
+    height: 40px;
+    margin-left: 3px;
+}
+#yhtx1-1{
+     background-color: #ca5ab9;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+#yhtx1-2{
+     background-color: #c54545;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+#yhtx1-3{
+     background-color: #63b34d;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+#yhtx1-4{
+     background-color: #3291e4;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+.touxiang1>span {
+    margin: 8px 0 0 5px;
+}
+
+#yhtx {
+    width: 35px;
+    height: 20px;
+    background-color: burlywood;
+    border-radius: 5px;
+    padding: 0 6px;
+    font-size: 14px;
+}
+
+.pl1 {
+    border-top: 1px dashed #a1c4fd;
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    line-height: 50px;
+    padding-left:5px;
+    background-color: #FFFFCC;
+    border-top-left-radius:30PX ;
+}
+.rzcontent > #rz-5{
+    position:relative;
+    top:60px
+}
+.rzcontent > #rz-6{
+    position:relative;
+    top:100px
+}
+.rzcontent > #rz-6{
+    position:relative;
+    top:120px
+}
+.rzcontent > #rz-7{
+    position:relative;
+    top:180px
+}
+/* 响应式适配（屏幕宽度 < 768px 时） */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        /* 单列堆叠 */
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* 页脚样式 */
+.foot {
+    height: 70px;
+    background-image:radial-gradient(#fff1eb 0%,#ace0f9 100%);
+    color: #000;
+    padding: 10px 5%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.foot span {
+    display: block;
+    font-size: 18px;
+}
+
+.foot span a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.foot span a:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
+
+.foot p {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .games-container {
+        gap: 20px;
+    }
+
+    .game-card {
+        width: 180px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    .zhuye {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+        margin-top: 100px;
+    }
+
+    .geren,
+    .tp {
+        width: 100%;
+        height: auto;
+    }
+
+    .geren {
+        height: 450px;
+        /* 调整高度避免内容溢出 */
+    }
+
+    .games-container {
+        gap: 15px;
+    }
+
+    .game-card {
+        width: 160px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .daohang {
+        gap: 10px;
+    }
+
+    .box {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .gtop {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .tx {
+        margin: 0 auto;
+    }
+
+    .user-info {
+        align-items: center;
+    }
+
+    .gbot {
+        align-items: center;
+    }
+
+    .game-card {
+        width: 140px;
+        height: 180px;
+    }
+
+    .tp-content {
+        padding: 30px 20px;
+    }
+
+    .tp h1 {
+        font-size: 28px;
+    }
+
+    .tp p {
+        font-size: 16px;
+    }
+
+    .dm-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .nav {
+        padding: 12px 3%;
+    }
+
+    .daohang {
+        display: none;
+    }
+
+    .denlu {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .game-card {
+        width: 130px;
+        height: 160px;
+    }
+
+    .music-card {
+        width: 100%;
+    }
+}

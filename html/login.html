@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="./login.css">
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/RFZZ6Wpz/h-3.png">
+</head>
+<body>
+    <div class="denlu">
+        <div class="tp">
+            <img src="https://i.postimg.cc/9XxSrGbS/image.jpg" alt="登录背景">
+        </div>
+        <div class="log">
+            <h1>登录|LOGIN</h1>
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="账号" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="密码" required>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">记住我</label>
+                </div>
+                <button type="submit"><a href="/index.html">登录</a></button>
+            </form>
+             <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // 获取立即注册按钮
+                            var registerBtn = document.getElementById('submit');
+                            // 为按钮添加点击事件监听器
+                            submit.addEventListener('click', function () {
+                                // 弹出注册成功的提示
+                                alert('欢迎来到祁听雨的网站');
+                                // 跳转到登录页面
+                                window.location.href = 'index.html'; // 替换为你的登录页面路径
+                            });
+                        });
+                    </script>
+            <span class="switch-link" onclick="switchToRegister()">没有账号？去注册</span>
+        </div>
+    </div>
+
+    <div class="zhuce" style="display: none;">
+        <div class="register-form">
+            <h1>注册|REGISTER</h1>
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="账号" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="密码" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="确认密码" required>
+                </div>
+                <button type="submit">注册</button>
+            </form>
+            <span class="switch-link" onclick="switchToLogin()">已有账号？去登录</span>
+        </div>
+        <div class="tp">
+            <img src="https://i.postimg.cc/8PFJrMJg/image.jpg" alt="注册背景">
+        </div>
+    </div>
+
+    <script>
+        function switchToRegister() {
+            document.querySelector('.denlu').style.display = 'none';
+            document.querySelector('.zhuce').style.display = 'flex';
+        }
+
+        function switchToLogin() {
+            document.querySelector('.zhuce').style.display = 'none';
+            document.querySelector('.denlu').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
