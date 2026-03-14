@@ -90,7 +90,7 @@ body {
   padding: 40px 25px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   min-height: 120px;
-  background-image: url(ht-mp1.jpg);
+  background-image: url(../tp/ht-mp1.jpg);
   background-size: cover;
 }
 /* 头像 */
@@ -279,8 +279,7 @@ margin-right: 10px;
 }
 
 .box:hover {
-  background: #ffffff;
-  transform: translateX(5px);
+  transform: translatey(2px);
   color: #000;
 }
 .box-icon {
